@@ -1,2 +1,176 @@
-# Week-2
-Tenx Week-2 Challenge
+ **Bank App Reviews Analysis**
+
+This repository contains scripts and datasets for analyzing user reviews of three major Ethiopian banks’ mobile apps: **Commercial Bank of Ethiopia (CBE)**, **Abyssinia Bank**, and **Dashen Bank**.
+
+The project is divided into **Task 1** (data collection and preprocessing) and **Task 2** (sentiment and thematic analysis).
+
+
+## **Table of Contents**
+
+1. [Project Overview](#project-overview)
+2. [Task 1: Data Collection & Preprocessing](#task-1-data-collection--preprocessing)
+3. [Task 2: Sentiment & Thematic Analysis](#task-2-sentiment--thematic-analysis)
+4. [Repository Structure](#repository-structure)
+5. [Requirements](#requirements)
+6. [How to Run](#how-to-run)
+7. [Results](#results)
+
+---
+
+## **Project Overview**
+
+The goal of this project is to analyze user feedback on bank apps to understand:
+
+* User satisfaction and sentiment trends
+* Common pain points or issues
+* Suggestions for app improvement
+
+The analysis uses **Python**, **Pandas**, **NLTK**, **TF-IDF**, and **matplotlib/seaborn**.
+
+---
+
+## **Task 1: Data Collection & Preprocessing**
+
+**Objective:** Collect user reviews from Google Play Store and clean the data for analysis.
+
+**Steps:**
+
+1. **Git Setup**
+
+   * Repository created with `.gitignore` and `requirements.txt`
+   * Work done on branch: `task-1`
+
+2. **Web Scraping**
+
+   * Used `google-play-scraper` to collect reviews, ratings, dates, and app names.
+   * Targeted **≥400 reviews per bank** (total ≥1,200 reviews).
+   * Apps:
+
+     * CBE: `com.combanketh.mobilebanking`
+     * Abyssinia Bank: `com.boa.boaMobileBanking`
+     * Dashen Bank: `com.dashen.dashensuperapp`
+
+3. **Preprocessing**
+
+   * Removed duplicates
+   * Handled missing values (`reply_content` and `app_id`)
+   * Normalized dates to `YYYY-MM-DD`
+   * Cleaned text (lowercasing, removing special characters)
+   * Saved as CSV with columns:
+
+```
+review_id, review_text, rating, review_date, review_year, review_month, bank_code, bank_name, user_name, thumbs_up, text_length, source
+```
+
+---
+
+## **Task 2: Sentiment & Thematic Analysis**
+
+**Objective:** Quantify sentiment and identify key themes in user reviews.
+
+**Steps:**
+
+1. **Sentiment Analysis**
+
+   * Used **NLTK VADER** for sentiment scoring
+   * `sentiment_score`: -1 (negative) to +1 (positive)
+   * `sentiment`: POSITIVE / NEGATIVE
+   * Aggregated sentiment by bank and rating
+
+2. **Thematic Analysis**
+
+   * Extracted top keywords using **TF-IDF** per bank
+   * Mapped keywords to 3–5 recurring themes:
+
+     * Account Access Issues
+     * Transaction Performance
+     * UI & Experience
+     * Customer Support
+   * Reviews without keywords labeled `"Other"`
+
+3. **Outputs**
+
+   * CSV with `review_id`, `review_text`, `sentiment_score`, `sentiment`, `themes`
+   * Charts: Ratings distribution, review counts per bank, review length distribution
+
+## **Repository Structure**
+
+```
+bank-app-reviews/
+│
+├─ data/
+│   ├─ bank_reviews_clean.csv
+│   └─ bank_reviews_analysis.csv
+│
+├─ scripts/
+│   ├─ preprocessing.py
+│   └─ sentiment_thematic_analysis.py
+│
+├─ requirements.txt
+└─ README.md
+```
+
+---
+
+## **Requirements**
+
+* Python ≥3.9
+
+* Packages:
+
+  ```
+  pandas
+  numpy
+  nltk
+  matplotlib
+  seaborn
+  scikit-learn
+  google-play-scraper
+  ```
+
+* Install via pip:
+
+  ```
+  pip install -r requirements.txt
+  ```
+
+* NLTK data required:
+
+  ```python
+  import nltk
+  nltk.download('vader_lexicon')
+  ```
+
+---
+
+## **How to Run**
+
+1. **Task 1:** Scrape and preprocess data
+
+```bash
+python scripts/task1_scraping_preprocessing.py
+```
+
+2. **Task 2:** Run sentiment and thematic analysis
+
+```bash
+python scripts/task2_sentiment_thematic_analysis.py
+```
+
+* The scripts save cleaned CSVs and generate charts in the `charts/` folder.
+
+
+## **Results**
+
+* **Reviews Collected:** 1,200+
+* **Sentiment Analysis:** Positive and negative sentiment quantified per review, bank, and rating
+* **Thematic Analysis:** Identified recurring themes per bank and mapped keywords to actionable categories
+* **Visualizations:** Ratings distribution, review counts per bank, review length distribution
+
+
+**Notes:**
+
+* Branch `task-1` contains scraping and preprocessing scripts.
+* Branch `task-2` contains sentiment and thematic analysis scripts.
+* Commits are frequent and descriptive for reproducibility.
+
