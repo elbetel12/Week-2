@@ -1,4 +1,4 @@
-google-play-scraper
+google_play_scraper
 pandas
 numpy
 matplotlib
