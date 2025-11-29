@@ -1,5 +1,13 @@
-google_play_scraper
+google-play-scraper
+requests
 pandas
 numpy
+nltk
+textblob
+scikit-learn
 matplotlib
 seaborn
+transformers
+torch
+huggingface-hub
+python-dotenv
