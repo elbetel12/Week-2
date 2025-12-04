@@ -1,9 +1,8 @@
- **Bank App Reviews Analysis**
+**Bank App Reviews Analysis**
 
 This repository contains scripts and datasets for analyzing user reviews of three major Ethiopian banks’ mobile apps: **Commercial Bank of Ethiopia (CBE)**, **Abyssinia Bank**, and **Dashen Bank**.
 
 The project is divided into **Task 1** (data collection and preprocessing) and **Task 2** (sentiment and thematic analysis).
-
 
 ## **Table of Contents**
 
@@ -21,9 +20,9 @@ The project is divided into **Task 1** (data collection and preprocessing) and *
 
 The goal of this project is to analyze user feedback on bank apps to understand:
 
-* User satisfaction and sentiment trends
-* Common pain points or issues
-* Suggestions for app improvement
+- User satisfaction and sentiment trends
+- Common pain points or issues
+- Suggestions for app improvement
 
 The analysis uses **Python**, **Pandas**, **NLTK**, **TF-IDF**, and **matplotlib/seaborn**.
 
@@ -37,26 +36,26 @@ The analysis uses **Python**, **Pandas**, **NLTK**, **TF-IDF**, and **matplotlib
 
 1. **Git Setup**
 
-   * Repository created with `.gitignore` and `requirements.txt`
-   * Work done on branch: `task-1`
+   - Repository created with `.gitignore` and `requirements.txt`
+   - Work done on branch: `task-1`
 
 2. **Web Scraping**
 
-   * Used `google-play-scraper` to collect reviews, ratings, dates, and app names.
-   * Targeted **≥400 reviews per bank** (total ≥1,200 reviews).
-   * Apps:
+   - Used `google-play-scraper` to collect reviews, ratings, dates, and app names.
+   - Targeted **≥400 reviews per bank** (total ≥1,200 reviews).
+   - Apps:
 
-     * CBE: `com.combanketh.mobilebanking`
-     * Abyssinia Bank: `com.boa.boaMobileBanking`
-     * Dashen Bank: `com.dashen.dashensuperapp`
+     - CBE: `com.combanketh.mobilebanking`
+     - Abyssinia Bank: `com.boa.boaMobileBanking`
+     - Dashen Bank: `com.dashen.dashensuperapp`
 
 3. **Preprocessing**
 
-   * Removed duplicates
-   * Handled missing values (`reply_content` and `app_id`)
-   * Normalized dates to `YYYY-MM-DD`
-   * Cleaned text (lowercasing, removing special characters)
-   * Saved as CSV with columns:
+   - Removed duplicates
+   - Handled missing values (`reply_content` and `app_id`)
+   - Normalized dates to `YYYY-MM-DD`
+   - Cleaned text (lowercasing, removing special characters)
+   - Saved as CSV with columns:
 
 ```
 review_id, review_text, rating, review_date, review_year, review_month, bank_code, bank_name, user_name, thumbs_up, text_length, source
@@ -72,26 +71,27 @@ review_id, review_text, rating, review_date, review_year, review_month, bank_cod
 
 1. **Sentiment Analysis**
 
-   * Used **NLTK VADER** for sentiment scoring
-   * `sentiment_score`: -1 (negative) to +1 (positive)
-   * `sentiment`: POSITIVE / NEGATIVE
-   * Aggregated sentiment by bank and rating
+   - Used **NLTK VADER** for sentiment scoring
+   - `sentiment_score`: -1 (negative) to +1 (positive)
+   - `sentiment`: POSITIVE / NEGATIVE
+   - Aggregated sentiment by bank and rating
 
 2. **Thematic Analysis**
 
-   * Extracted top keywords using **TF-IDF** per bank
-   * Mapped keywords to 3–5 recurring themes:
+   - Extracted top keywords using **TF-IDF** per bank
+   - Mapped keywords to 3–5 recurring themes:
 
-     * Account Access Issues
-     * Transaction Performance
-     * UI & Experience
-     * Customer Support
-   * Reviews without keywords labeled `"Other"`
+     - Account Access Issues
+     - Transaction Performance
+     - UI & Experience
+     - Customer Support
+
+   - Reviews without keywords labeled `"Other"`
 
 3. **Outputs**
 
-   * CSV with `review_id`, `review_text`, `sentiment_score`, `sentiment`, `themes`
-   * Charts: Ratings distribution, review counts per bank, review length distribution
+   - CSV with `review_id`, `review_text`, `sentiment_score`, `sentiment`, `themes`
+   - Charts: Ratings distribution, review counts per bank, review length distribution
 
 ## **Repository Structure**
 
@@ -114,9 +114,9 @@ bank-app-reviews/
 
 ## **Requirements**
 
-* Python ≥3.9
+- Python ≥3.9
 
-* Packages:
+- Packages:
 
   ```
   pandas
@@ -128,13 +128,13 @@ bank-app-reviews/
   google-play-scraper
   ```
 
-* Install via pip:
+- Install via pip:
 
   ```
   pip install -r requirements.txt
   ```
 
-* NLTK data required:
+- NLTK data required:
 
   ```python
   import nltk
@@ -157,16 +157,14 @@ python scripts/task1_scraping_preprocessing.py
 python scripts/task2_sentiment_thematic_analysis.py
 ```
 
-* The scripts save cleaned CSVs and generate charts in the `charts/` folder.
-
+- The scripts save cleaned CSVs and generate charts in the `charts/` folder.
 
 ## **Results**
 
-* **Reviews Collected:** 1,200+
-* **Sentiment Analysis:** Positive and negative sentiment quantified per review, bank, and rating
-* **Thematic Analysis:** Identified recurring themes per bank and mapped keywords to actionable categories
-* **Visualizations:** Ratings distribution, review counts per bank, review length distribution
-
+- **Reviews Collected:** 1,200+
+- **Sentiment Analysis:** Positive and negative sentiment quantified per review, bank, and rating
+- **Thematic Analysis:** Identified recurring themes per bank and mapped keywords to actionable categories
+- **Visualizations:** Ratings distribution, review counts per bank, review length distribution
 
 **Notes:**
 
