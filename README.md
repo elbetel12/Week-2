@@ -237,6 +237,6 @@ Stores all cleaned and processed user reviews.
 ### Notes on Task 3 Implementation
 - The database allows persistent storage of over 1,000 reviews collected from three banks.  
 - The `bank_id` foreign key ensures referential integrity between `banks` and `reviews`.  
-- Data insertion is automated using Python (`psycopg2` + `execute_values`) to handle bulk inserts efficiently.  
+- Data insertion is automated using Python (`psycopg2` + `execute_values`) to handle bulk inserts efficiently 
 - The schema supports future analytical tasks, including sentiment and thematic analysis from Task 2.  
 - SQL queries can be used to verify data integrity, e.g., `SELECT COUNT(*) FROM reviews WHERE bank_id = X;`
