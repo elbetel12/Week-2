@@ -1,9 +1,8 @@
- **Bank App Reviews Analysis**
+**Bank App Reviews Analysis**
 
 This repository contains scripts and datasets for analyzing user reviews of three major Ethiopian banks’ mobile apps: **Commercial Bank of Ethiopia (CBE)**, **Abyssinia Bank**, and **Dashen Bank**.
 
 The project is divided into **Task 1** (data collection and preprocessing) and **Task 2** (sentiment and thematic analysis).
-
 
 ## **Table of Contents**
 
@@ -21,9 +20,9 @@ The project is divided into **Task 1** (data collection and preprocessing) and *
 
 The goal of this project is to analyze user feedback on bank apps to understand:
 
-* User satisfaction and sentiment trends
-* Common pain points or issues
-* Suggestions for app improvement
+- User satisfaction and sentiment trends
+- Common pain points or issues
+- Suggestions for app improvement
 
 The analysis uses **Python**, **Pandas**, **NLTK**, **TF-IDF**, and **matplotlib/seaborn**.
 
@@ -37,26 +36,26 @@ The analysis uses **Python**, **Pandas**, **NLTK**, **TF-IDF**, and **matplotlib
 
 1. **Git Setup**
 
-   * Repository created with `.gitignore` and `requirements.txt`
-   * Work done on branch: `task-1`
+   - Repository created with `.gitignore` and `requirements.txt`
+   - Work done on branch: `task-1`
 
 2. **Web Scraping**
 
-   * Used `google-play-scraper` to collect reviews, ratings, dates, and app names.
-   * Targeted **≥400 reviews per bank** (total ≥1,200 reviews).
-   * Apps:
+   - Used `google-play-scraper` to collect reviews, ratings, dates, and app names.
+   - Targeted **≥400 reviews per bank** (total ≥1,200 reviews).
+   - Apps:
 
-     * CBE: `com.combanketh.mobilebanking`
-     * Abyssinia Bank: `com.boa.boaMobileBanking`
-     * Dashen Bank: `com.dashen.dashensuperapp`
+     - CBE: `com.combanketh.mobilebanking`
+     - Abyssinia Bank: `com.boa.boaMobileBanking`
+     - Dashen Bank: `com.dashen.dashensuperapp`
 
 3. **Preprocessing**
 
-   * Removed duplicates
-   * Handled missing values (`reply_content` and `app_id`)
-   * Normalized dates to `YYYY-MM-DD`
-   * Cleaned text (lowercasing, removing special characters)
-   * Saved as CSV with columns:
+   - Removed duplicates
+   - Handled missing values (`reply_content` and `app_id`)
+   - Normalized dates to `YYYY-MM-DD`
+   - Cleaned text (lowercasing, removing special characters)
+   - Saved as CSV with columns:
 
 ```
 review_id, review_text, rating, review_date, review_year, review_month, bank_code, bank_name, user_name, thumbs_up, text_length, source
@@ -72,26 +71,27 @@ review_id, review_text, rating, review_date, review_year, review_month, bank_cod
 
 1. **Sentiment Analysis**
 
-   * Used **NLTK VADER** for sentiment scoring
-   * `sentiment_score`: -1 (negative) to +1 (positive)
-   * `sentiment`: POSITIVE / NEGATIVE
-   * Aggregated sentiment by bank and rating
+   - Used **NLTK VADER** for sentiment scoring
+   - `sentiment_score`: -1 (negative) to +1 (positive)
+   - `sentiment`: POSITIVE / NEGATIVE
+   - Aggregated sentiment by bank and rating
 
 2. **Thematic Analysis**
 
-   * Extracted top keywords using **TF-IDF** per bank
-   * Mapped keywords to 3–5 recurring themes:
+   - Extracted top keywords using **TF-IDF** per bank
+   - Mapped keywords to 3–5 recurring themes:
 
-     * Account Access Issues
-     * Transaction Performance
-     * UI & Experience
-     * Customer Support
-   * Reviews without keywords labeled `"Other"`
+     - Account Access Issues
+     - Transaction Performance
+     - UI & Experience
+     - Customer Support
+
+   - Reviews without keywords labeled `"Other"`
 
 3. **Outputs**
 
-   * CSV with `review_id`, `review_text`, `sentiment_score`, `sentiment`, `themes`
-   * Charts: Ratings distribution, review counts per bank, review length distribution
+   - CSV with `review_id`, `review_text`, `sentiment_score`, `sentiment`, `themes`
+   - Charts: Ratings distribution, review counts per bank, review length distribution
 
 ## **Repository Structure**
 
@@ -114,9 +114,9 @@ bank-app-reviews/
 
 ## **Requirements**
 
-* Python ≥3.9
+- Python ≥3.9
 
-* Packages:
+- Packages:
 
   ```
   pandas
@@ -128,13 +128,13 @@ bank-app-reviews/
   google-play-scraper
   ```
 
-* Install via pip:
+- Install via pip:
 
   ```
   pip install -r requirements.txt
   ```
 
-* NLTK data required:
+- NLTK data required:
 
   ```python
   import nltk
@@ -157,33 +157,34 @@ python scripts/task1_scraping_preprocessing.py
 python scripts/task2_sentiment_thematic_analysis.py
 ```
 
-* The scripts save cleaned CSVs and generate charts in the `charts/` folder.
-
+- The scripts save cleaned CSVs and generate charts in the `charts/` folder.
 
 ## **Results**
 
-* **Reviews Collected:** 1,200+
-* **Sentiment Analysis:** Positive and negative sentiment quantified per review, bank, and rating
-* **Thematic Analysis:** Identified recurring themes per bank and mapped keywords to actionable categories
-* **Visualizations:** Ratings distribution, review counts per bank, review length distribution
-
+- **Reviews Collected:** 1,200+
+- **Sentiment Analysis:** Positive and negative sentiment quantified per review, bank, and rating
+- **Thematic Analysis:** Identified recurring themes per bank and mapped keywords to actionable categories
+- **Visualizations:** Ratings distribution, review counts per bank, review length distribution
 
 **Notes:**
 
-* Branch `task-1` contains scraping and preprocessing scripts.
-* Branch `task-2` contains sentiment and thematic analysis scripts.
-* Commits are frequent and descriptive for reproducibility.
+- Branch `task-1` contains scraping and preprocessing scripts.
+- Branch `task-2` contains sentiment and thematic analysis scripts.
+- Commits are frequent and descriptive for reproducibility.
 
 ## Task 3 — PostgreSQL
+
 This folder contains SQL schema and a Python loader to persist cleaned review data into PostgreSQL.
 
 ### Files
-- sql/schema.sql            -- DDL to create banks & reviews tables
+
+- sql/schema.sql -- DDL to create banks & reviews tables
 - sql/bank_reviews_schema.sql -- autogenerated schema dump (optional)
 - scripts/load_to_postgres.py -- load CSV into DB using SQLAlchemy
 - data/bank_reviews_clean.csv -- cleaned CSV (not committed if large)
 
 ### Usage
+
 1. Create database:
    psql -U postgres -c "CREATE DATABASE bank_reviews;"
 2. Export DB_URL:
@@ -192,4 +193,50 @@ This folder contains SQL schema and a Python loader to persist cleaned review da
    python scripts/load_to_postgres.py data/bank_reviews_clean.csv
 
 ### Verification
+
 Run the SQL verification queries in sql/verification.sql or via psql.
+
+
+## Task 3: PostgreSQL Database Schema
+
+To store the cleaned and processed review data, a PostgreSQL database `bank_reviews` was created.  
+This step simulates real-world data engineering workflows, ensuring persistent storage for analytics.
+
+### Banks Table
+Stores metadata about each bank and its app.
+
+| Column           | Type    | Description |
+|-----------------|---------|-------------|
+| bank_id         | SERIAL PRIMARY KEY | Unique identifier for each bank |
+| bank_code       | TEXT UNIQUE | Short code for the bank (used for mapping reviews) |
+| bank_name       | TEXT NOT NULL | Full bank name |
+| app_id          | TEXT | App package ID (from Google Play) |
+| current_rating  | REAL | Average app rating from Google Play |
+| total_ratings   | INTEGER | Total number of ratings on Google Play |
+| total_reviews   | INTEGER | Total number of reviews collected |
+
+### Reviews Table
+Stores all cleaned and processed user reviews.
+
+| Column           | Type    | Description |
+|-----------------|---------|-------------|
+| review_id       | TEXT PRIMARY KEY | Unique identifier for each review |
+| bank_id         | INTEGER REFERENCES banks(bank_id) ON DELETE CASCADE | Links review to the corresponding bank |
+| review_text     | TEXT | Full text of the user review |
+| rating          | SMALLINT | Star rating provided by the user |
+| review_date     | DATE | Date the review was posted |
+| review_year     | SMALLINT | Year of the review (for aggregation) |
+| review_month    | SMALLINT | Month of the review (for aggregation) |
+| user_name       | TEXT | Name of the user who posted the review |
+| thumbs_up       | INTEGER | Number of "helpful" votes |
+| text_length     | INTEGER | Character length of the review |
+| source          | TEXT | Source of the review (e.g., Google Play) |
+| sentiment_label | TEXT | Sentiment category (POSITIVE / NEGATIVE / NEUTRAL) |
+| sentiment_score | REAL | Sentiment score computed via NLP pipeline |
+
+### Notes on Task 3 Implementation
+- The database allows persistent storage of over 1,000 reviews collected from three banks.  
+- The `bank_id` foreign key ensures referential integrity between `banks` and `reviews`.  
+- Data insertion is automated using Python (`psycopg2` + `execute_values`) to handle bulk inserts efficiently.  
+- The schema supports future analytical tasks, including sentiment and thematic analysis from Task 2.  
+- SQL queries can be used to verify data integrity, e.g., `SELECT COUNT(*) FROM reviews WHERE bank_id = X;`
